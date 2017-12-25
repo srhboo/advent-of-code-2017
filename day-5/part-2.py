@@ -2,6 +2,8 @@ import numpy as np
 import input5
 # use a generator
 
+samp = np.array([0, 3, 0, 1, -3])
+
 
 def gen_maze(num_array):
     curr_ind = 0
@@ -14,7 +16,10 @@ def gen_maze(num_array):
         nonlocal steps
         while 1:
             new_ind = curr_ind + curr_arr[curr_ind]
-            curr_arr[curr_ind] += 1
+            if curr_arr[curr_ind] >= 3:
+                curr_arr[curr_ind] -= 1
+            else:
+                curr_arr[curr_ind] += 1
             curr_ind = new_ind
             steps += 1
             try:
